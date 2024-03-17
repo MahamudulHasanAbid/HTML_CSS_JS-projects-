@@ -1,0 +1,125 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Round progress Bar">
+    <title>Round_Progress</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bar {
+            Height: 160px;
+            width: 160px;
+            /* border: 2px solid black; */
+            position: relative;
+        }
+
+        .outer {
+            Height: 160px;
+            width: 160px;
+            /* border: 2px solid rgb(0, 0, 0); */
+            box-shadow: 6px 6px 10px -1px rgba(78, 78, 78, 0.15),
+                -6px -6px 10px -1px rgba(230, 230, 230, 0.4);
+            border-radius: 50%;
+            padding: 20px;
+        }
+
+        .inner {
+            Height: 120px;
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            /* border: 2px solid rgb(255, 13, 0); */
+            box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.1),
+                inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+                -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+                0.5px 0.5px 0px rgba(0, 0, 0, 0.1),
+                0px 12px 10px -10px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+        }
+
+        circle {
+            fill: none;
+            stroke: url(#GradientColor);
+            stroke-width: 20px;
+            stroke-dasharray: 472;
+            stroke-dashoffset: 472;
+            animation: anime 2s linear forwards;
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes anime {
+            100% {
+                stroke-dashoffset: 179;
+            }
+
+        }
+
+        .text {
+            margin-top: 30px;
+            /* background-color: red; */
+            width: 25vw;
+            font-size: 24;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bar">
+        <div class="outer">
+            <div class="inner">
+                <div id="number">
+
+                </div>
+            </div>
+        </div>
+        <div class="text">
+            <u><i>This is a circular progress bar.</i></u>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+            <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="#e91e63" />
+                    <stop offset="100%" stop-color="#673ab7" />
+                </linearGradient>
+            </defs>
+            <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+        </svg>
+    </div>
+
+    <script>
+        let n = document.getElementById('number');
+        let count = 0;
+        setInterval(() => {
+            if (count > 62) {
+                clearInterval();
+            } else {
+                count += 1;
+                n.innerHTML = count;
+            }
+        }, 31);
+    </script>
+</body>
+
+</html>
