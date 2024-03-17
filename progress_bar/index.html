@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="progress bar.">
+    <title>line-bar</title>
+    <style>
+        .bar {
+
+            width: 500px;
+            /* height: 30px; */
+            background: #c0c0c0;
+            border-radius: 20px;
+        }
+
+        #progress {
+            height: 30px;
+            width: 20%;
+            line-height: 30px;
+            background-color: red;
+            text-align: center;
+            color:white;
+            border-radius: 20px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bar">
+        <div id="progress">10%</div>
+    </div>
+    <br>
+    <button onclick="move()">click for update</button>
+
+    <script>
+        let i = 0; //Animation still not started.
+        function move(){
+            if(i==0){
+                i=1; //Starts the animation.
+                let elem=document.getElementById('progress');
+                let width=10;
+                let id = setInterval(frame,20); //Animation going.
+                function frame(){
+                    if(width>=75){
+                        clearInterval();
+                        i=0;
+                    }else{
+                        width++;
+                        elem.style.width=width+"%";
+                        elem.innerHTML = width + '%';
+                    }
+                }
+
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
+
+
+
+
